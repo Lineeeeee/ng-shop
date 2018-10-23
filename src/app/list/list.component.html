@@ -1,0 +1,73 @@
+<storeHeader></storeHeader>
+<!-- banner部分-->
+<div class="store">
+  <img src="img/index/index_guild.png">
+</div>
+<!--笔记本电脑列表-->
+<div class="store_action">
+  <div class="store_action_left">
+    <div class="store_action_left_content">
+      <div id="plist">
+        <div class="salc_top">
+          笔记本电脑
+        </div>
+        <div *ngIf="myList.length>0"  class="salc_content">
+          <img class="loading" *ngIf="myList.length<0" src="img/loading.gif">
+
+          <div   *ngFor="let tmp of myList;let myIndex=index"  class="product" [id]="tmp.lid" >
+            <a ><img [src]="tmp.pic" [alt]="tmp.title"/></a>
+            <div>
+              <p><span class="price">￥{{tmp.price}}</span><a href="product_details.html?lid=${p.lid}" class="title" title="${p.title}">{{tmp.title}}</a></p>
+              <div>
+                <span class="reduc lf">-</span><input type="text" style="padding-left: 9px;" value="1" class="lf"/><span class="add lf">+</span>
+                <div class="addcart" (click)="addCart(myIndex)">
+                  加入购物车
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--分页条-->
+        <div class="pager">
+          <a (click)="changPage(false)" class="prevPage">上一页</a>
+          <a (click)="loadPage(tmp+1)" *ngFor="let tmp of list" href="javascript:;" class="tcdNumber current">{{tmp+1}}</a>
+          <a (click)="changPage(true)" class="tcdNumber">下一页</a>
+        </div>
+       </div>
+    </div>
+  </div>
+  <div class="store_action_right rt">
+    <div class="store_action_right_top">
+      <p><img src="img/foodstore/foodstore_icon2.png" alt=""/>商家公告</p>
+      <div>
+        <p>本店推出全网最低价套餐，保证比其他平台的价格要低！</p>
+        <p>不要葱、姜、蒜等这些忌口暂时无法坐不了，敬请谅解！</p>
+        <p>晚上10点以后订餐需另加送餐费2元！谢谢合作！</p>
+      </div>
+    </div>
+    <div class="store_action_right_cart">
+      <div class="store_action_right_cart_top">
+        购物车 <span class="clear rt">清空</span>
+      </div>
+      <div class="store_action_right_cart_content">
+        <div></div>
+        <div id="5">
+        <span>精选双人餐</span>
+        <div><span class="cart_reduc lf">-</span><input type="text" value="1" class="lf"/><span class="cart_add lf">+</span></div>
+        <span class="rt pc">￥:<span class="cart_unit_price">20.00</span></span>
+        </div>
+      </div>
+      <div class="sarc">
+        <div class="total_price lf">
+          <img src="img/foodstore/foodstore_car_2.png" alt=""/>￥:<span>0.00</span>
+        </div>
+        <div class="settle lf">
+          <a href="cart.html" style="color:#fff;">去结算</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<storeFooter></storeFooter>
+
+

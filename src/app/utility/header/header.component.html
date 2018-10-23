@@ -1,0 +1,55 @@
+<!-- 页面顶部-->
+<div *ngIf="isClose" style="top: 0px;left: 0px;
+  position: absolute;z-index: 10000;background: rgba(0, 0, 0, 0.6);
+  width: 1536px;height: 3092px;"></div>
+<header id="top">
+  <div id="logo" class="lf">
+    <a routerLink="/index">
+      <img class="animated jello" src="img/header/logo.png" alt="logo"/>
+    </a>
+  </div>
+  <div id="top_input" class="lf">
+    <input id="input" class="input-kw" [(ngModel)]="myKw" type="text" placeholder="请输入您要搜索的内容"/>
+    <div class="seek" tabindex="-1">
+      <div class="actived"><span>分类搜索</span> <img src="img/header/header_normal.png" alt=""/></div>
+      <div class="seek_content">
+        <div  id="xxyp">学习用品</div>
+        <div id="srdz">私人订制</div>
+      </div>
+    </div>
+    <a href="javascript:void(0)" class="rt"><img id="search" (click)="toList()" src="img/header/search.png" alt="搜索"/></a>
+  </div>
+  <div class="rt">
+    <ul class="lf">
+      <li><a routerLink="/center" title="我的收藏"><img class="care" src="img/header/care.png" alt=""/></a><b>|</b></li>
+      <li><a routerLink="/center" title="用户中心"><img class="order" src="img/header/order.png" alt=""/></a><b>|</b></li>
+      <li><a (click)="toCart()" title="我的购物车"><img class="shopcar" src="img/header/shop_car.png" alt=""/></a><b>|</b></li>
+    </ul>
+    <ul *ngIf="!userLogin" class="lf login_info">
+      <li><a href="register.html" title="注册新用户">&nbsp;注册</a><b>|</b></li>
+      <li><a routerLink="/login" title="用户登录">登录</a></li>
+    </ul>
+    <ul *ngIf="userLogin" class="lf login_info">
+      <li><span>&nbsp;欢迎:{{uName}}</span><a (click)="outLogin()">&nbsp;&nbsp;退出</a><b>|</b></li>
+      <li><a routerLink="/center">收藏中心</a></li>
+    </ul>
+  </div>
+</header>
+<!-- nav主导航-->
+<nav id="nav">
+  <ul>
+    <li><a routerLink="/index">首页</a></li>
+    <li><a routerLink="/notfound" class="activ">学习用品</a></li>
+    <li><a routerLink="/notfound">私人定制</a></li>
+  </ul>
+</nav>
+<div *ngIf="isClose" id="alertMsg" style="width: 400px; height: 200px;position:fixed;left: 568px; top: 43.5px;">
+  <p id="alertMsg_info">
+   <b style="display: inline-block;">退出成功！</b>
+  点击确定重新返回登录页面
+  </p>
+  <!--<span style="display: block;">{{Msg}}</span>-->
+  <a  id="alertMsg_btn1" style="top:0px;left:130px;" href="javascript:void (0)">
+    <cite routerLink="/login">确定</cite>
+  </a>
+</div>
